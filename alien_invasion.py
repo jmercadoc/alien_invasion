@@ -93,6 +93,10 @@ class AlienInvasion:
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
         
+        if not self.aliens:
+            self.bullets.empty()
+            self._create_fleet()
+        
         
 
     def _create_fleet(self):
@@ -137,7 +141,6 @@ class AlienInvasion:
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
-        print("self.settings.fleet_direction", self.settings.fleet_direction)
 
 if __name__ == '__main__':
     ai = AlienInvasion()
