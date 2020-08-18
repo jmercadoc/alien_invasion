@@ -16,7 +16,13 @@ Python 3.6+
 ## Ejecutar juego
     python alien_invasion.py
 
-### Para salir del juego presionar "q"
+## Como comenzar un jugar
+    presiona la tecla "p"
+
+## Teclas
+    flechas izquierda y derecha mueven la nave
+    espacio para disparar
+    q para cerrar el juego
 
 ## Referencia
 
