@@ -64,9 +64,9 @@ class AlienInvasion:
     def _check_play_button(self, mouse_pos):
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
-            self._new_game()
+            self._start_game()
             
-    def _new_game(self):
+    def _start_game(self):
         self.stats.reset_stats()     
         self.settings.initialize_dynamic_settings()       
         self.stats.game_active = True
@@ -91,7 +91,7 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
         elif event.key == pygame.K_p:
-            self._new_game()
+            self._start_game()
     
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets groups"""
@@ -142,7 +142,8 @@ class AlienInvasion:
             self.bullets, self.aliens, True, True)        
         
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
             
         
